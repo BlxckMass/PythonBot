@@ -18,7 +18,12 @@ public class PythonBotApplication {
 		ApplicationContext context = new AnnotationConfigApplicationContext(PythonBotApplication.class);
 
 		Starter starter = context.getBean(Starter.class);
-		starter.start();
+		try {
+			starter.start();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
 	}
 
 }
