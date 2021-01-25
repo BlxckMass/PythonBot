@@ -1,0 +1,27 @@
+package ru.blackmass.bot.commands.main;
+
+import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.objects.messages.Message;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import ru.blackmass.bot.commands.VkCommand;
+import ru.blackmass.bot.utils.MessageTextUtil;
+
+@Component
+public class InfoCommand extends VkCommand {
+
+    private Logger log;
+
+    @Autowired
+    public InfoCommand(VkApiClient vk, GroupActor group, Logger log) {
+        super(vk, group, log);
+        this.log = log;
+    }
+
+    @Override
+    public void run(Message message) {
+        sendMessage(MessageTextUtil.getBeginText(), message);
+    }
+}
